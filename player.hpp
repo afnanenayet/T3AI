@@ -13,8 +13,7 @@
 #include "gamePieces.hpp"
 
 class player {
-private:
-    pieceType tType;
+pieceType tType;
 public:
     player(pieceType); //constructor sets whether player is an X or an O
     
