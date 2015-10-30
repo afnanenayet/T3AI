@@ -9,6 +9,7 @@
 #ifndef gamePieces_hpp
 #define gamePieces_hpp
 
-enum pieceType {gX, gO};
+// Enumerating the game pieces: X, O, and none
+enum pieceType {gEmpty, gX, gO};
 
 #endif /* gamePieces_hpp */

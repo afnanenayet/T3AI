@@ -13,12 +13,15 @@
 #include "gamePieces.hpp"
 
 class player {
-pieceType tType;
+private:
+    pieceType tType;
+    
 public:
-    player(pieceType); //constructor sets whether player is an X or an O
+    //constructor sets whether player is an X or an O
+    player(pieceType);
     
-    bool addPiece(pieceType(&)[3][3], int(&)[2]); //passes the game board by reference so we can add to it and tells if the move is possible
-    
+    //pass game board and array[2] that contains the player's moves
+    bool addPiece(pieceType**, int[]);
 };
 
 #endif /* player_hpp */
