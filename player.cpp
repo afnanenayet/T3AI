@@ -10,7 +10,6 @@
 
 player::player(pieceType initializeType) {
     // Initializes the player class and their type (X or O)
-    
     player::tType = initializeType;
 };
 
@@ -20,13 +19,13 @@ bool player::addPiece (pieceType **gameBoard, int addPosition[]){
     // of the board and not overriding an existing game piece) the function returns true
     
     int arrayIndex[2] = {(addPosition[0] - 1), (addPosition[1] - 1)};
+    int bound = arrayIndex[0] * arrayIndex[1];
     
-    if (arrayIndex[0] * arrayIndex[1] < 9 && gameBoard[addPosition[0]][addPosition[1]] == gEmpty) {
+    if (bound < 9 && bound > 0 && gameBoard[addPosition[0]][addPosition[1]] == gEmpty) {
         // checking validity criteria
         gameBoard[addPosition[0]][addPosition[1]] = tType;
         return true;
     }
-    
     else {
         return false;
     }

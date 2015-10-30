@@ -31,11 +31,9 @@ int main() {
     player computer(gX); // initializing 'computer' player
     int nextMove[2]; // this array holds the coordinates of where player wants to place a piece
     
-    //entering input loop
-    
+    //entering menu input loop
     string userInput;
     
-    // entering menu
     while (userInput != "q") {
         NEWLINE
         cout << "Welcome to tic-tac-toe";
@@ -53,11 +51,9 @@ int main() {
         if (userInput == "1") {
             // initiate AI
         }
-        
         else if (userInput == "2") {
             // initiate 2 player game
         }
-        
         else if (userInput != "q") {
             NEWLINE
             cout << "You did not enter a valid option. Please enter a valid option:";
@@ -83,7 +79,6 @@ int main() {
         if (moveIsValid) {
             boardHistory.push(gameBoard);
         }
-    
         else {
             NEWLINE
             cout << "Move was not valid.";
