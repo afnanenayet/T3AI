@@ -30,5 +30,4 @@ bool player::addPiece (pieceType **gameBoard, int addPosition[]){
     else {
         return false;
     }
-    
 }

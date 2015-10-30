@@ -38,9 +38,16 @@ int main() {
     // entering menu
     while (userInput != "q") {
         NEWLINE
+        cout << "Welcome to tic-tac-toe";
+        NEWLINE
+        cout << "Enter a choice:";
+        NEWLINE
         cout << "q: quit";
+        NEWLINE
         cout << "1: 1 player (one computer)";
+        NEWLINE
         cout << "2: 2 players";
+        NEWLINE
         getline(cin, userInput);
         
         if (userInput == "1") {
@@ -51,9 +58,9 @@ int main() {
             // initiate 2 player game
         }
         
-        else {
-            cout << "You did not enter a valid option. Please enter a valid option:";
+        else if (userInput != "q") {
             NEWLINE
+            cout << "You did not enter a valid option. Please enter a valid option:";
         }
     }
     
@@ -61,10 +68,13 @@ int main() {
     
     // input loop for adding part to game board
     while (!moveIsValid) {
-    
+        NEWLINE
         cout << "Type in x: ";
+        NEWLINE
         cin >> nextMove[0];
+        NEWLINE
         cout << "\nType in y: ";
+        NEWLINE
         cin >> nextMove[1];
     
     
@@ -75,14 +85,10 @@ int main() {
         }
     
         else {
+            NEWLINE
             cout << "Move was not valid.";
         }
-    
     }
     
     return 0;
-}
-
-void getInput() {
-    
 }
