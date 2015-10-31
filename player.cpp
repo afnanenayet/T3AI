@@ -30,3 +30,7 @@ bool player::addPiece (pieceType **gameBoard, int addPosition[]){
         return false;
     }
 }
+
+void player::setName(std::string name) {
+    this -> playerName = name;
+}

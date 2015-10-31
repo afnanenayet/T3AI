@@ -11,6 +11,7 @@
 #include <string>
 #include "player.hpp"
 #include "gamePieces.hpp"
+#include "eventManager.hpp"
 
 #define NEWLINE cout << '\n'; //print a newline
 
@@ -34,6 +35,8 @@ int main() {
     //entering menu input loop
     string userInput;
     
+    eventManager game;
+    
     while (userInput != "q") {
         NEWLINE
         cout << "Welcome to tic-tac-toe";
@@ -49,10 +52,10 @@ int main() {
         getline(cin, userInput);
         
         if (userInput == "1") {
-            // initiate AI
+            game.onePlayer();
         }
         else if (userInput == "2") {
-            // initiate 2 player game
+            game.twoPlayer();
         }
         else if (userInput != "q") {
             NEWLINE
