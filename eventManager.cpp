@@ -7,31 +7,62 @@
 //
 
 #include "eventManager.hpp"
+#define NEWLINE std::cout<<"\n";
 
-eventManager::eventManager(pieceType** arg) {
+eventManager::eventManager(pieceType** arg)
+{
     board = arg;
 }
 
-bool onePlayer(player humanPlayer) {
+bool eventManager::onePlayer(player * humanPlayer)
+{
+    static pieceType** boardA = eventManager::board;
     bool gameOver = false;
     
-    while(!gameOver) {
+    while(!gameOver)
+    {
+        // Add a piece to the game board
+        bool successfulMove;
+        
+        do
+        {
+            successfulMove = humanPlayer->addPiece(boardA, getInput());
+        }
+        // TODO: check to see if game is over here, and then set gameOver variable
+        while (!successfulMove);
+    }
+    
+    return true; //debug
+}
+
+bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
+{
+    bool gameOver = false;
+    
+    while(!gameOver)
+    {
         
     }
     
     return true; //debug
 }
 
-bool twoPlayer(player * playerOne, player * playerTwo) {
-    bool gameOver = false;
+// Input from CLI
+using namespace std;
+int * eventManager::getInput()
+{
+    int tempArray[2];
+    NEWLINE
+    cout << "Enter X: ";
+    cin >> tempArray[0];
+    NEWLINE
+    cout << "Enter Y: ";
+    cin >> tempArray[1];
+    NEWLINE
     
-    while(!gameOver) {
-        
-    }
-    
-    return true; //debug
-}
-
-int * getInput() {
-    return 0; //debug
+    /**NOTE: this will return the address of the memory
+    associated with the array (doesn't matter for this purpose
+    since we are just reading
+    **/
+    return tempArray;
 }

@@ -9,11 +9,11 @@
 #ifndef player_hpp
 #define player_hpp
 
-#include <stdio.h>
 #include "gamePieces.hpp"
 #include <string>
 
-class player {
+class player
+{
 private:
     pieceType tType;
     

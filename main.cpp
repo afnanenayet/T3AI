@@ -17,27 +17,31 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     std::stack<pieceType**> boardHistory; //contains board history so user can undo
     
     //initializing the game board
     pieceType ** gameBoard;
     gameBoard = new pieceType *[3];
     
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++)
+    {
         gameBoard[i] = new pieceType[3];
     }
     
     boardHistory.push(gameBoard); //pushing first state
     player computer(gX); // initializing 'computer' player
+    player human(gO); // initializing human player
     int nextMove[2]; // this array holds the coordinates of where player wants to place a piece
     
     //entering menu input loop
     string userInput;
     
-    eventManager game;
+    eventManager game(gameBoard);
     
-    while (userInput != "q") {
+    while (userInput != "q")
+    {
         NEWLINE
         cout << "Welcome to tic-tac-toe";
         NEWLINE
@@ -51,13 +55,21 @@ int main() {
         NEWLINE
         getline(cin, userInput);
         
-        if (userInput == "1") {
-            game.onePlayer();
+        if (userInput == "1")
+        {
+            game.onePlayer(&human);
         }
-        else if (userInput == "2") {
-            game.twoPlayer();
+        else if (userInput == "2")
+        {
+            //game.twoPlayer();
         }
-        else if (userInput != "q") {
+        else if (userInput == "q")
+        {
+            return 0;
+        }
+        
+        else
+        {
             NEWLINE
             cout << "You did not enter a valid option. Please enter a valid option:";
         }
@@ -79,10 +91,12 @@ int main() {
     
         moveIsValid = computer.addPiece(gameBoard, nextMove);
     
-        if (moveIsValid) {
+        if (moveIsValid)
+        {
             boardHistory.push(gameBoard);
         }
-        else {
+        else
+        {
             NEWLINE
             cout << "Move was not valid.";
         }
