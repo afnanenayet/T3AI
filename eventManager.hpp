@@ -10,13 +10,13 @@
 #define eventManager_hpp
 
 #include <stack>
-#include <iostream>
 #include "player.hpp"
+#include "CLInterface.hpp"
 
 class eventManager
 {
     // Class variables
-    pieceType** board;
+    pieceType ** board;
     std::stack<pieceType**> boardHistory;
     
     // Methods
@@ -24,7 +24,7 @@ class eventManager
     int * getInput();
 
 public:
-    eventManager(pieceType**);
+    eventManager(pieceType *** arg);
     
     // A game where a human player plays against the AI, returns 0 if the AI won
     // returns 1 if the player won

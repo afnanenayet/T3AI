@@ -12,6 +12,7 @@
 #include "player.hpp"
 #include "gamePieces.hpp"
 #include "eventManager.hpp"
+#include "CLInterface.hpp"
 
 #define NEWLINE cout << '\n'; //print a newline
 
@@ -37,9 +38,10 @@ int main()
     
     //entering menu input loop
     string userInput;
+    CLInterface printer;
     
-    eventManager game(gameBoard);
-    
+    eventManager game(&gameBoard);
+
     while (userInput != "q")
     {
         NEWLINE
@@ -58,6 +60,7 @@ int main()
         if (userInput == "1")
         {
             game.onePlayer(&human);
+            printer.printBoard(gameBoard);
         }
         else if (userInput == "2")
         {

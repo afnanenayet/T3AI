@@ -9,14 +9,14 @@
 #include "eventManager.hpp"
 #define NEWLINE std::cout<<"\n";
 
-eventManager::eventManager(pieceType** arg)
+eventManager::eventManager(pieceType*** arg)
 {
-    board = arg;
+    board = *arg;
 }
 
 bool eventManager::onePlayer(player * humanPlayer)
 {
-    static pieceType** boardA = eventManager::board;
+    
     bool gameOver = false;
     
     while(!gameOver)
@@ -26,7 +26,14 @@ bool eventManager::onePlayer(player * humanPlayer)
         
         do
         {
-            successfulMove = humanPlayer->addPiece(boardA, getInput());
+            CLInterface printer;
+            successfulMove = humanPlayer->addPiece(board, getInput());
+            printer.printBoard(board);
+            
+            if (successfulMove)
+            {
+                boardHistory.push(board);
+            }
         }
         // TODO: check to see if game is over here, and then set gameOver variable
         while (!successfulMove);
