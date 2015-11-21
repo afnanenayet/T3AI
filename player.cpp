@@ -12,7 +12,7 @@ player::player(pieceType initializeType)
 {
     // Initializes the player class and their type (X or O)
     player::tType = initializeType;
-};
+}
 
 bool player::addPiece (pieceType ** gameBoard, int addPosition[])
 {
