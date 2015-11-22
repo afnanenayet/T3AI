@@ -18,9 +18,6 @@ class eventManager
 {
     pieceType ** board;
     std::stack<pieceType**> boardHistory;
-    
-    // Gets input for next move from CLI
-    int * getInput();
 
 public:
     eventManager(pieceType *** arg);

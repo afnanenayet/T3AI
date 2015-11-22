@@ -15,7 +15,7 @@ using namespace std;
 void CLInterface::printBoard(pieceType ** board)
 {
     NEWLINE
-    cout << "    1   2   3     <-- x";
+    cout << "    1   2   3   <-- x";
     NEWLINE
     cout << "  _____________";
     for (int i = 0; i < 3; i++)
@@ -62,4 +62,20 @@ void CLInterface::printBoard(pieceType ** board)
     NEWLINE
     cout << "y";
     NEWLINE
+}
+
+int * CLInterface::getInput()
+{
+    int tempArray[2];
+    NEWLINE
+    std::cout << "Enter X: ";
+    std::cin >> tempArray[0];
+    NEWLINE
+    std::cout << "Enter Y: ";
+    std::cin >> tempArray[1];
+    NEWLINE
+    
+    /**NOTE: this will return the address of the memory
+     associated with the array**/
+    return tempArray;
 }

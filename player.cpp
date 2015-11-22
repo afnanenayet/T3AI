@@ -7,6 +7,8 @@
 //
 
 #include "player.hpp"
+
+// Determines if move integers are within bounds of the gameboard array
 #define VALID(x) x[0] < 3 && x[0] >= 0 && x[1] < 3 && x[1] >= 0
 
 player::player(pieceType initializeType)

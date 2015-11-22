@@ -18,7 +18,7 @@ eventManager::eventManager(pieceType*** arg)
 
 bool eventManager::onePlayer(player * humanPlayer)
 {
-    
+    CLInterface printer;
     bool gameOver = false;
     
     while(!gameOver)
@@ -28,8 +28,11 @@ bool eventManager::onePlayer(player * humanPlayer)
         
         do
         {
-            CLInterface printer;
-            successfulMove = humanPlayer->addPiece(board, getInput());
+            // Allocate space for array so memory isn't killed when getInput() moves out of scope
+            // (otherwise the pointer could point to wrong data)
+            int * inputVars;
+            inputVars = printer.getInput();
+            successfulMove = humanPlayer->addPiece(board, inputVars);
             printer.printBoard(board);
             
             if (successfulMove)
@@ -53,24 +56,6 @@ bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
         // WIP/TODO: finish this
     }
     return true; //debug
-}
-
-// Input from CLI
-using namespace std;
-int * eventManager::getInput()
-{
-    int tempArray[2];
-    NEWLINE
-    cout << "Enter X: ";
-    cin >> tempArray[0];
-    NEWLINE
-    cout << "Enter Y: ";
-    cin >> tempArray[1];
-    NEWLINE
-    
-    /**NOTE: this will return the address of the memory
-    associated with the array**/
-    return tempArray;
 }
 
 int isGameOver()
