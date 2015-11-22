@@ -10,6 +10,7 @@
 #define eventManager_hpp
 
 #include <stack>
+#include <random>
 #include "player.hpp"
 #include "CLInterface.hpp"
 

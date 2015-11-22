@@ -5,6 +5,7 @@
 //  Created by Afnan Enayet on 11/20/15.
 //  Copyright © 2015 Afnan Enayet. All rights reserved.
 //
+// This one's quick and dirty :)
 
 #include "CLInterface.hpp"
 #define NEWLINE cout << "\n";
@@ -14,12 +15,18 @@ using namespace std;
 void CLInterface::printBoard(pieceType ** board)
 {
     NEWLINE
-    cout << "_____________";
+    cout << "    1   2   3     <-- x";
+    NEWLINE
+    cout << "  _____________";
     for (int i = 0; i < 3; i++)
     {
         NEWLINE
         for (int j = 0; j < 3; j++)
         {
+            if (j == 0)
+            {
+                cout << i + 1 << " ";
+            }
             
             if (j == 0 || j == 1)
             {
@@ -46,11 +53,13 @@ void CLInterface::printBoard(pieceType ** board)
             {
                 cout << "|";
             }
-            
-            
         }
         NEWLINE
-        cout << "-------------";
+        cout << "  -------------";
     }
+    NEWLINE
+    cout << "^";
+    NEWLINE
+    cout << "y";
     NEWLINE
 }

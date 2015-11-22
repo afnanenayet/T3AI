@@ -37,15 +37,12 @@ int main()
     
     boardHistory.push(gameBoard); //pushing first state
     player computer(gX); // initializing 'computer' player
-    player human(gO); // initializing human player
     int nextMove[2]; // this array holds the coordinates of where player wants to place a piece
     
     //entering menu input loop
     string userInput;
-    CLInterface printer;
     
     eventManager game(&gameBoard);
-
     while (userInput != "q")
     {
         NEWLINE
@@ -63,8 +60,25 @@ int main()
         
         if (userInput == "1")
         {
-            game.onePlayer(&human);
-            printer.printBoard(gameBoard);
+            srand(uint(time(nullptr)));
+            
+            if (rand() < .5)
+            {
+                // Initializing players
+                player human(gO);
+                player computer(gX);
+                NEWLINE
+                cout << "You are playing with the O piece";
+                game.onePlayer(&human);
+            }
+            else
+            {
+                player human(gX);
+                player computer(gO);
+                NEWLINE
+                cout << "You are playing with the X piece";
+                game.onePlayer(&human);
+            }
         }
         else if (userInput == "2")
         {
