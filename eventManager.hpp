@@ -16,7 +16,6 @@
 
 class eventManager
 {
-    // Class variables
     pieceType ** board;
     std::stack<pieceType**> boardHistory;
     
@@ -33,8 +32,6 @@ public:
     // A game where two human players play against each other. Returns the player that won
     // (1 for player one, 2 for player two)
     bool twoPlayer(player * playerOne, player * playerTwo);
-    
-    
 };
 
 #endif /* eventManager_hpp */

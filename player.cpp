@@ -17,9 +17,6 @@ player::player(pieceType initializeType)
 
 bool player::addPiece (pieceType ** gameBoard, int addPosition[])
 {
-    // adds piece to specified point on the gameboard, checking to make sure
-    // it does not override an existing piece. If the move is valid (within bounds
-    // of the board and not overriding an existing game piece) the function returns true
     int arrayIndex[2] = {(addPosition[0] - 1), (addPosition[1] - 1)};
     
     try
@@ -34,7 +31,7 @@ bool player::addPiece (pieceType ** gameBoard, int addPosition[])
             return false;
         }
     }
-    catch (int n)
+    catch (long n)
     {
         return false;
     }

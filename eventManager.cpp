@@ -9,6 +9,8 @@
 #include "eventManager.hpp"
 #define NEWLINE std::cout<<"\n";
 
+enum gamedef {tie, win, loss};
+
 eventManager::eventManager(pieceType*** arg)
 {
     board = *arg;
@@ -48,9 +50,8 @@ bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
     
     while(!gameOver)
     {
-        
+        // WIP/TODO: finish this
     }
-    
     return true; //debug
 }
 
@@ -68,8 +69,12 @@ int * eventManager::getInput()
     NEWLINE
     
     /**NOTE: this will return the address of the memory
-    associated with the array (doesn't matter for this purpose
-    since we are just reading
-    **/
+    associated with the array**/
     return tempArray;
+}
+
+int isGameOver()
+{
+    // TODO figure out diagonals
+    return gamedef::tie;
 }
