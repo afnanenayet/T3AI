@@ -32,12 +32,29 @@ bool eventManager::onePlayer(player * humanPlayer)
             // (otherwise the pointer could point to wrong data)
             int * inputVars;
             inputVars = printer.getInput();
-            successfulMove = humanPlayer->addPiece(board, inputVars);
-            printer.printBoard(board);
             
-            if (successfulMove)
-            {
+            if (humanPlayer->addPiece(board, inputVars)){
                 boardHistory.push(board);
+                
+                printer.printBoard(board);
+                
+                if (humanPlayer->won())
+                {
+                    NEWLINE
+                    std::cout<< "You won!";
+                    gameOver = true;
+                }
+                
+                else
+                {
+                    NEWLINE
+                    std::cout<<"You have not won.";
+                }
+            }
+            else
+            {
+                NEWLINE
+                std::cout << "Invalid move.";
             }
         }
         // TODO: check to see if game is over here, and then set gameOver variable
@@ -58,8 +75,39 @@ bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
     return true; //debug
 }
 
-int isGameOver()
+int eventManager::isGameOver()
 {
-    // TODO figure out diagonals
+
+    int ohCounter = 0;
+    int xhCounter = 0;
+    int ovCounter = 0;
+    int xvCounter = 0;
+    for (int i = 0; i < 3; i++)
+    {
+        if (board[i][0] == gX)
+        {
+            xhCounter++;
+        }
+        
+        else if (board[i][0] == gO)
+        {
+            ohCounter++;
+        }
+        
+        if (board[0][i] == gX)
+        {
+            xvCounter++;
+        }
+        
+        else if (board[0][i] == gO)
+        {
+            ovCounter++;
+        }
+    }
+    
+    if (xhCounter > 2 || ohCounter > 2)
+    {
+        return 1;
+    }
     return gamedef::tie;
 }

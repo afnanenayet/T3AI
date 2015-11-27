@@ -11,10 +11,12 @@
 
 #include "gamePieces.hpp"
 #include <string>
+#include <vector>
 
 class player
 {
     pieceType tType;
+    std::vector<int*> moveHistory;
     
 public:
     // Player statistics/info
@@ -33,6 +35,7 @@ public:
     
     // Sets player name
     void setName(std::string name);
+    bool won();
 };
 
 #endif /* player_hpp */

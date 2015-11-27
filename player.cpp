@@ -26,6 +26,7 @@ bool player::addPiece (pieceType ** gameBoard, int addPosition[])
         if (VALID(arrayIndex))
         {
             (gameBoard[arrayIndex[1]][arrayIndex[0]]) = tType;
+            moveHistory.push_back(arrayIndex);
             return true;
         }
         else
@@ -36,6 +37,31 @@ bool player::addPiece (pieceType ** gameBoard, int addPosition[])
     catch (long n)
     {
         return false;
+    }
+}
+
+bool player::won()
+{
+    if (moveHistory.size() < 3)
+    {
+        return false;
+    }
+    else {
+        auto diagCounter = 0;
+        for (auto movePair : moveHistory)
+        {
+            if (movePair[0] == movePair[1])
+            {
+                diagCounter++;
+            }
+        }
+        if (diagCounter == 3) {
+            return true;
+        }
+        
+        else {
+            return false;
+        }
     }
 }
 

@@ -18,6 +18,8 @@ class eventManager
 {
     pieceType ** board;
     std::stack<pieceType**> boardHistory;
+    
+    int isGameOver();
 
 public:
     eventManager(pieceType *** arg);
