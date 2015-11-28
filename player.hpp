@@ -15,7 +15,6 @@
 
 class player
 {
-    pieceType tType;
     std::vector<int*> moveHistory;
     
 public:
@@ -23,6 +22,7 @@ public:
     int wins = 0;
     int losses = 0;
     std::string playerName;
+    pieceType tType;
     
     // Constructor sets whether player is an X or an O
     player(pieceType);

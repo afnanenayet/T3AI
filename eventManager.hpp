@@ -19,7 +19,7 @@ class eventManager
     pieceType ** board;
     std::stack<pieceType**> boardHistory;
     
-    int isGameOver();
+    pieceType whoWon();
 
 public:
     eventManager(pieceType *** arg);
