@@ -16,6 +16,7 @@ eventManager::eventManager(pieceType*** arg)
     board = *arg;
 }
 
+using namespace std;
 bool eventManager::onePlayer(player * humanPlayer)
 {
     CLInterface printer;
@@ -37,20 +38,20 @@ bool eventManager::onePlayer(player * humanPlayer)
             if (whoWon() == humanPlayer->tType)
             {
                 NEWLINE
-                std::cout << "You won!";
+                cout << "You won!";
                 humanPlayer->wins++;
                 gameOver = true;
             }
             else
             {
                 NEWLINE
-                std::cout << "You have not won.";
+                cout << "You have not won.";
             }
         }
         else
         {
             NEWLINE
-            std::cout << "Invalid move.";
+            cout << "Invalid move.";
         }
     }
     while (!gameOver);
@@ -64,7 +65,21 @@ bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
     
     while(!gameOver)
     {
-        // WIP/TODO: finish this
+        CLInterface printer;
+        int * inputVars = printer.getInput();
+        
+        NEWLINE
+        cout << "Player 1";
+        if (playerOne->addPiece(board, inputVars))
+        {
+            boardHistory.push(board);
+        }
+        
+        else
+        {
+            NEWLINE
+            cout << "Invalid move.";
+        }
     }
     return true; //debug
 }

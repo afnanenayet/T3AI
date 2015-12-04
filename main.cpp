@@ -43,7 +43,7 @@ int main()
     string userInput;
     
     eventManager game(&gameBoard);
-    while (userInput != "q")
+    do
     {
         NEWLINE
         cout << "Welcome to tic-tac-toe";
@@ -94,7 +94,7 @@ int main()
             NEWLINE
             cout << "You did not enter a valid option. Please enter a valid option:";
         }
-    }
+    } while (userInput != "q");
     
     bool moveIsValid;
     
