@@ -19,6 +19,8 @@ class eventManager
     pieceType ** board;
     std::stack<pieceType**> boardHistory;
     
+    std::stack<int*> moveHistory; // thinking about switching to this from boardhistory
+    
     pieceType whoWon();
 
 public:

@@ -9,7 +9,7 @@
 #include "eventManager.hpp"
 #define NEWLINE std::cout<<"\n";
 
-enum gamedef {tie, xWin, oWin};
+enum result {tie, xWin, oWin};
 
 eventManager::eventManager(pieceType*** arg)
 {
@@ -31,7 +31,8 @@ bool eventManager::onePlayer(player * humanPlayer)
         inputVars = printer.getInput();
         
         if (humanPlayer->addPiece(board, inputVars)){
-            boardHistory.push(board);
+            // boardHistory.push(board); // Removing (experimental)
+            moveHistory.push(inputVars);
             
             printer.printBoard(board);
             
@@ -86,14 +87,14 @@ bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
 
 pieceType eventManager::whoWon()
 {
-    int ohCounter = 0; // O horizontal
-    int xhCounter = 0; // X horizontal
-    int ovCounter = 0; // O vertical
-    int xvCounter = 0; // X vertical
-    int odCounterA = 0; // O diagonal (top left to bottom right)
-    int xdCounterA = 0; // X diagonal (top left to bottom right)
-    int odCounterB = 0; // O diagonal (top right to bottom left)
-    int xdCounterB = 0; // X diagonal (top right to bottom left)
+    uint8_t ohCounter = 0, // O horizontal
+    xhCounter = 0, // X horizontal
+    ovCounter = 0, // O vertical
+    xvCounter = 0, // X vertical
+    odCounterA = 0, // O diagonal (top left to bottom right)
+    xdCounterA = 0, // X diagonal (top left to bottom right)
+    odCounterB = 0, // O diagonal (top right to bottom left)
+    xdCounterB = 0; // X diagonal (top right to bottom left)
     
     for (int i = 0; i < 3; i++)
     {
