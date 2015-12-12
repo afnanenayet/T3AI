@@ -70,7 +70,7 @@ bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
         int * inputVars = printer.getInput();
         
         NEWLINE
-        cout << "Player 1";
+        cout << playerOne->playerName;
         if (playerOne->addPiece(board, inputVars))
         {
             boardHistory.push(board);

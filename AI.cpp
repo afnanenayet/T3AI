@@ -8,9 +8,12 @@
 
 #include "AI.hpp"
 
-// Node for a the AI tree
-
-AI::AI()
+AI::AI(float timeAlloc)
 {
-    
+    timeLimit = timeAlloc;
+}
+
+int * AI::nextMove()
+{
+    return nullptr; //TODO change
 }

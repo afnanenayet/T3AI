@@ -5,7 +5,7 @@
 //  Created by Afnan Enayet on 11/20/15.
 //  Copyright © 2015 Afnan Enayet. All rights reserved.
 //
-// This one's quick and dirty :)
+// This one's quick and dirty
 
 #include "CLInterface.hpp"
 #define NEWLINE cout << "\n";
@@ -75,7 +75,7 @@ int * CLInterface::getInput()
     std::cin >> tempArray[1];
     NEWLINE
     
-    /**NOTE: this will return the address of the memory
+    /**This will return the address of the memory
      associated with the array**/
     return tempArray;
 }
