@@ -12,8 +12,6 @@
 class AI
 {
 private:
-    float timeLimit;
-    // Node for a the AI tree
     struct node
     {
         node * root = nullptr,
@@ -22,9 +20,7 @@ private:
     };
     
 public:
-    // Pass time limit for computation in SECONDS
-    AI(float timeAlloc);
-    int * nextMove ();
+    AI();
 };
 
 #endif /* AI_hpp */

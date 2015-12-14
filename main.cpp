@@ -9,7 +9,6 @@
 #include <iostream>
 #include <stack>
 #include <string>
-#include <algorithm>
 #include "player.hpp"
 #include "gamePieces.hpp"
 #include "eventManager.hpp"
@@ -37,6 +36,7 @@ int main()
     }
     
     boardHistory.push(gameBoard); //pushing first state
+    player computer(gX); // initializing 'computer' player
     int nextMove[2]; // this array holds the coordinates of where player wants to place a piece
     
     //entering menu input loop
@@ -45,7 +45,6 @@ int main()
     eventManager game(&gameBoard);
     do
     {
-        srand(time(nullptr));
         NEWLINE
         cout << "Welcome to tic-tac-toe";
         NEWLINE
@@ -61,58 +60,29 @@ int main()
         
         if (userInput == "1")
         {
+            srand(uint(time(nullptr)));
             
-            
-            pieceType playerPiece;
-            pieceType computerPiece;
-            
-            (rand() % 1 <= .5) ? (playerPiece = gO) : (playerPiece = gX);
-            
-            for (int i = 0; i < 100; i++)
+            if (rand() < .5)
             {
+                // Initializing players
+                player human(gO);
+                player computer(gX);
                 NEWLINE
-                float x = rand() + 1;
-                cout << (x);
+                cout << "You are playing with the O piece";
+                game.onePlayer(&human);
             }
-            
-            player human(playerPiece);
-            player computer(computerPiece);
-            
-            string nameString;
-            string pieceString;
-            NEWLINE
-            cout << "Enter Player 1's name: ";
-            getline(cin, nameString);
-            NEWLINE
-            
-            human.setName(nameString);
-        
-            (playerPiece == gO) ? (pieceString = "O") : (pieceString = "X");
-            cout << human.playerName << " is playing with the " << pieceString << " piece";
-            
-            game.onePlayer(&human);
+            else
+            {
+                player human(gX);
+                player computer(gO);
+                NEWLINE
+                cout << "You are playing with the X piece";
+                game.onePlayer(&human);
+            }
         }
         else if (userInput == "2")
         {
-            pieceType typeOne;
-            pieceType typeTwo;
-            
-            if (rand() % 1 <= .5)
-            {
-                typeOne = gX;
-                typeTwo = gO;
-            }
-            
-            else
-            {
-                typeOne = gO;
-                typeTwo = gX;
-            }
-            
-            player playerOne(typeOne);
-            player playerTwo(typeTwo);
-            
-            game.twoPlayer(&playerOne, &playerTwo);
+            //game.twoPlayer();
         }
         else if (userInput == "q")
         {
@@ -125,6 +95,33 @@ int main()
             cout << "You did not enter a valid option. Please enter a valid option:";
         }
     } while (userInput != "q");
-
+    
+    bool moveIsValid;
+    
+    // input loop for adding part to game board
+    while (!moveIsValid) {
+        NEWLINE
+        cout << "Type in x: ";
+        NEWLINE
+        cin >> nextMove[0];
+        NEWLINE
+        cout << "\nType in y: ";
+        NEWLINE
+        cin >> nextMove[1];
+    
+    
+        moveIsValid = computer.addPiece(gameBoard, nextMove);
+    
+        if (moveIsValid)
+        {
+            boardHistory.push(gameBoard);
+        }
+        else
+        {
+            NEWLINE
+            cout << "Move was not valid.";
+        }
+    }
+    
     return 0;
 }
