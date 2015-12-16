@@ -18,14 +18,11 @@
 
 using namespace std;
 
-int main()
-{
-    std::stack<pieceType**> boardHistory; //contains board history so user can undo
-    
+pieceType ** createBoard() {
     //initializing the game board
     pieceType ** gameBoard;
     gameBoard = new pieceType *[3];
-    
+
     for (int i = 0; i < 3; i++)
     {
         gameBoard[i] = new pieceType[3];
@@ -34,15 +31,21 @@ int main()
             (gameBoard[i][j]) = gEmpty;
         }
     }
+    return gameBoard;
+}
+
+int main()
+{
+    //std::stack<pieceType**> boardHistory; //contains board history so user can undo
     
-    boardHistory.push(gameBoard); //pushing first state
-    player computer(gX); // initializing 'computer' player
-    int nextMove[2]; // this array holds the coordinates of where player wants to place a piece
+    
+    
+    //boardHistory.push(gameBoard); //pushing first state
     
     //entering menu input loop
     string userInput;
     
-    eventManager game(&gameBoard);
+    
     do
     {
         NEWLINE
@@ -60,6 +63,10 @@ int main()
         
         if (userInput == "1")
         {
+            pieceType**  board = createBoard();
+            eventManager game(&board);
+            
+            
             srand(uint(time(nullptr)));
             
             if (rand() < .5)
@@ -95,33 +102,5 @@ int main()
             cout << "You did not enter a valid option. Please enter a valid option:";
         }
     } while (userInput != "q");
-    
-    bool moveIsValid;
-    
-    // input loop for adding part to game board
-    while (!moveIsValid) {
-        NEWLINE
-        cout << "Type in x: ";
-        NEWLINE
-        cin >> nextMove[0];
-        NEWLINE
-        cout << "\nType in y: ";
-        NEWLINE
-        cin >> nextMove[1];
-    
-    
-        moveIsValid = computer.addPiece(gameBoard, nextMove);
-    
-        if (moveIsValid)
-        {
-            boardHistory.push(gameBoard);
-        }
-        else
-        {
-            NEWLINE
-            cout << "Move was not valid.";
-        }
-    }
-    
     return 0;
 }

@@ -87,7 +87,8 @@ bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
 
 pieceType eventManager::whoWon()
 {
-    uint8_t ohCounter = 0, // O horizontal
+    
+    int ohCounter = 0, // O horizontal
     xhCounter = 0, // X horizontal
     ovCounter = 0, // O vertical
     xvCounter = 0, // X vertical
@@ -95,31 +96,6 @@ pieceType eventManager::whoWon()
     xdCounterA = 0, // X diagonal (top left to bottom right)
     odCounterB = 0, // O diagonal (top right to bottom left)
     xdCounterB = 0; // X diagonal (top right to bottom left)
-    
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            if (board[i][j] == gX)
-            {
-                xhCounter++;
-            }
-            
-            else if (board[i][j] == gO)
-            {
-                ohCounter++;
-            }
-            
-            if (board[j][i] == gX)
-            {
-                xvCounter++;
-            }
-            else if (board[j][i] == gO)
-            {
-                ovCounter++;
-            }
-        }
-    }
     
     for (int i = 0; i < 3; i++)
     {
@@ -140,7 +116,54 @@ pieceType eventManager::whoWon()
         {
             xdCounterB++;
         }
+        
+        for (int j = 0; j < 3; j++)
+        {
+            if (board[i][j] == gX)
+            {
+                xhCounter++;
+            }
+            
+            else if (board[i][j] == gO)
+            {
+                ohCounter++;
+            }
+            
+            if (board[j][i] == gX)
+            {
+                xvCounter++;
+            }
+            else if (board[j][i] == gO)
+            {
+                ovCounter++;
+            }
+            
+            if (xhCounter < 3) {
+                xhCounter = 0;
+            }
+        }
     }
+    
+    /*for (int i = 0; i < 3; i++)
+    {
+        if (board[i][i] == gX)
+        {
+            xdCounterA++;
+        }
+        else if (board[i][i] == gO)
+        {
+            odCounterA++;
+        }
+        
+        if (board[2 - i][i] == gO)
+        {
+            odCounterB++;
+        }
+        else if (board[2 - i][i] == gX)
+        {
+            xdCounterB++;
+        }
+    }*/
     
     if (xhCounter > 2 || xvCounter > 2 || xdCounterA > 2 || xdCounterB > 2)
     {
