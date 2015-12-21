@@ -29,6 +29,7 @@ bool eventManager::onePlayer(player * humanPlayer)
         // (otherwise the pointer could point to wrong data)
         int * inputVars;
         inputVars = printer.getInput();
+        pieceType lastPlayed;
         
         if (humanPlayer->addPiece(board, inputVars)){
             // boardHistory.push(board); // Removing (experimental)
@@ -36,7 +37,7 @@ bool eventManager::onePlayer(player * humanPlayer)
             
             printer.printBoard(board);
             
-            if (whoWon() == humanPlayer->tType)
+            if (whoWon(moveHistory.top(), lastPlayed) == humanPlayer->tType)
             {
                 NEWLINE
                 cout << "You won!";
@@ -85,85 +86,17 @@ bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
     return true; //debug
 }
 
-pieceType eventManager::whoWon()
+pieceType eventManager::whoWon(int lastMove[], const pieceType & lastType)
 {
+    int verticalCounter = 0;
+    int horizontalCounter = 0;
+    int diagonalCounter = 0;
+    int rdiagonalCounter = 0;
     
-    int ohCounter = 0, // O horizontal
-    xhCounter = 0, // X horizontal
-    ovCounter = 0, // O vertical
-    xvCounter = 0, // X vertical
-    odCounterA = 0, // O diagonal (top left to bottom right)
-    xdCounterA = 0, // X diagonal (top left to bottom right)
-    odCounterB = 0, // O diagonal (top right to bottom left)
-    xdCounterB = 0; // X diagonal (top right to bottom left)
-    
-    for (int i = 0; i < 3; i++)
-    {
-        if (board[i][i] == gX)
-        {
-            xdCounterA++;
-        }
-        else if (board[i][i] == gO)
-        {
-            odCounterA++;
-        }
+    for (int i = 0; i < 2; i++) {
         
-        if (board[2 - i][i] == gO)
-        {
-            odCounterB++;
-        }
-        else if (board[2 - i][i] == gX)
-        {
-            xdCounterB++;
-        }
-        
-        for (int j = 0; j < 3; j++)
-        {
-            if (board[i][j] == gX)
-            {
-                xhCounter++;
-            }
-            
-            else if (board[i][j] == gO)
-            {
-                ohCounter++;
-            }
-            
-            if (board[j][i] == gX)
-            {
-                xvCounter++;
-            }
-            else if (board[j][i] == gO)
-            {
-                ovCounter++;
-            }
-            
-            if (xhCounter < 3) {
-                xhCounter = 0;
-            }
-        }
     }
     
-    /*for (int i = 0; i < 3; i++)
-    {
-        if (board[i][i] == gX)
-        {
-            xdCounterA++;
-        }
-        else if (board[i][i] == gO)
-        {
-            odCounterA++;
-        }
-        
-        if (board[2 - i][i] == gO)
-        {
-            odCounterB++;
-        }
-        else if (board[2 - i][i] == gX)
-        {
-            xdCounterB++;
-        }
-    }*/
     
     if (xhCounter > 2 || xvCounter > 2 || xdCounterA > 2 || xdCounterB > 2)
     {
