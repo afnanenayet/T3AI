@@ -63,7 +63,7 @@ int main()
         
         if (userInput == "1")
         {
-            pieceType**  board = createBoard();
+            pieceType ** board = createBoard();
             eventManager game(&board);
             
             
@@ -86,6 +86,7 @@ int main()
                 cout << "You are playing with the X piece";
                 game.onePlayer(&human);
             }
+            delete board;
         }
         else if (userInput == "2")
         {
@@ -102,5 +103,6 @@ int main()
             cout << "You did not enter a valid option. Please enter a valid option:";
         }
     } while (userInput != "q");
+    
     return 0;
 }

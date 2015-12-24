@@ -21,7 +21,7 @@ class eventManager
     
     std::stack<int*> moveHistory; // thinking about switching to this from boardhistory
     
-    pieceType whoWon(int lastMove[], const pieceType & lastType);
+    bool whoWon(int lastMove[], const pieceType & lastType);
 
 public:
     eventManager(pieceType *** arg);

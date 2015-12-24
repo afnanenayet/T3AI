@@ -29,15 +29,21 @@ bool eventManager::onePlayer(player * humanPlayer)
         // (otherwise the pointer could point to wrong data)
         int * inputVars;
         inputVars = printer.getInput();
+        
+        // Setting an array here because the space for inputVars won't be held after anything changes
+        int tempArray [2] = {inputVars[0] - 1, inputVars[1] - 1};
+        
         pieceType lastPlayed;
         
         if (humanPlayer->addPiece(board, inputVars)){
-            // boardHistory.push(board); // Removing (experimental)
+            // boardHistory.push(board); // Removing (experimentally)
+            
             moveHistory.push(inputVars);
+            lastPlayed = humanPlayer->tType;
             
             printer.printBoard(board);
             
-            if (whoWon(moveHistory.top(), lastPlayed) == humanPlayer->tType)
+            if (whoWon(tempArray, lastPlayed))
             {
                 NEWLINE
                 cout << "You won!";
@@ -86,27 +92,35 @@ bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
     return true; //debug
 }
 
-pieceType eventManager::whoWon(int lastMove[], const pieceType & lastType)
+// Keep arguments const because they should not be manipulated
+bool eventManager::whoWon(int lastMove[], const pieceType & lastType)
 {
-    int verticalCounter = 0;
-    int horizontalCounter = 0;
-    int diagonalCounter = 0;
-    int rdiagonalCounter = 0;
+    int verticalCounter = 0,
+    horizontalCounter = 0,
+    diagonalCounter = 0,
+    rdiagonalCounter = 0;
     
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
+        if (board[i][lastMove[1]] == lastType)
+        {
+            horizontalCounter++;
+        }
         
+        if (board[lastMove[0]][i] == lastType)
+        {
+            verticalCounter++;
+        }
+        
+        if (board[i][i] == lastType)
+        {
+            diagonalCounter++;
+        }
+        
+        if (board[2 - i][i] == lastType)
+        {
+            rdiagonalCounter++;
+        }
     }
     
-    
-    if (xhCounter > 2 || xvCounter > 2 || xdCounterA > 2 || xdCounterB > 2)
-    {
-        return gX;
-    }
-    else if (ohCounter > 2 || ovCounter > 2 || odCounterA > 2 || odCounterB > 2)
-    {
-        return gO;
-    }
-    else {
-        return gEmpty;
-    }
+    return (verticalCounter == 3 || horizontalCounter  == 3 || rdiagonalCounter == 3 || diagonalCounter == 3);
 }
