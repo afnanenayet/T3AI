@@ -100,13 +100,23 @@ bool eventManager::whoWon(int lastMove[], const pieceType & lastType)
     diagonalCounter = 0,
     rdiagonalCounter = 0;
     
+    if (lastType == gX)
+    {
+        cout << "\ngX";
+    }
+    
+    else if (lastType == gO)
+    {
+        cout << "\ngX";
+    }
+    
     for (int i = 0; i < 3; i++) {
-        if (board[i][lastMove[1]] == lastType)
+        if (board[i][lastMove[0]] == lastType)
         {
             horizontalCounter++;
         }
         
-        if (board[lastMove[0]][i] == lastType)
+        if (board[lastMove[1]][i] == lastType)
         {
             verticalCounter++;
         }
