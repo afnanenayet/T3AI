@@ -19,20 +19,23 @@ class eventManager
     pieceType ** board;
     std::stack<pieceType**> boardHistory;
     
+    // This allows the user to undo moves
     std::stack<int*> moveHistory; // thinking about switching to this from boardhistory
     
-    bool whoWon(int lastMove[], const pieceType & lastType);
+    
+    // Determines whether the player won
+    bool whoWon(const int lastMove[], const pieceType & lastType);
 
 public:
-    eventManager(pieceType *** arg);
+    eventManager(pieceType ** &arg);
     
     // A game where a human player plays against the AI, returns 0 if the AI won
     // returns 1 if the player won
-    bool onePlayer(player * humanPlayer);
+    bool onePlayer(player &humanPlayer);
     
     // A game where two human players play against each other. Returns the player that won
     // (1 for player one, 2 for player two)
-    bool twoPlayer(player * playerOne, player * playerTwo);
+    bool twoPlayer(player &playerOne, player &playerTwo);
 };
 
 #endif /* eventManager_hpp */

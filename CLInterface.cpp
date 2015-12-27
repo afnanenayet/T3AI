@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void CLInterface::printBoard(pieceType ** board)
+void CLInterface::printBoard(pieceType ** &board)
 {
     NEWLINE
     cout << "    1   2   3   <-- x";

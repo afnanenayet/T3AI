@@ -64,19 +64,22 @@ int main()
         if (userInput == "1")
         {
             pieceType ** board = createBoard();
-            eventManager game(&board);
+            eventManager game(board);
             
             
             srand(uint(time(nullptr)));
             
-            if (rand() < .5)
+            cout << "\nrand: " << rand();
+            
+            if ((rand() % 1) < .5)
             {
+                
                 // Initializing players
                 player human(gO);
                 player computer(gX);
                 NEWLINE
                 cout << "You are playing with the O piece";
-                game.onePlayer(&human);
+                game.onePlayer(human);
             }
             else
             {
@@ -84,7 +87,7 @@ int main()
                 player computer(gO);
                 NEWLINE
                 cout << "You are playing with the X piece";
-                game.onePlayer(&human);
+                game.onePlayer(human);
             }
             delete board;
         }

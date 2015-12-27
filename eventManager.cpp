@@ -11,13 +11,13 @@
 
 enum result {tie, xWin, oWin};
 
-eventManager::eventManager(pieceType*** arg)
+eventManager::eventManager(pieceType** &arg)
 {
-    board = *arg;
+    board = arg;
 }
 
 using namespace std;
-bool eventManager::onePlayer(player * humanPlayer)
+bool eventManager::onePlayer(player &humanPlayer)
 {
     CLInterface printer;
     bool gameOver = false;
@@ -35,11 +35,9 @@ bool eventManager::onePlayer(player * humanPlayer)
         
         pieceType lastPlayed;
         
-        if (humanPlayer->addPiece(board, inputVars)){
-            // boardHistory.push(board); // Removing (experimentally)
-            
-            moveHistory.push(inputVars);
-            lastPlayed = humanPlayer->tType;
+        if (humanPlayer.addPiece(board, inputVars))
+        {
+            lastPlayed = humanPlayer.tType;
             
             printer.printBoard(board);
             
@@ -47,7 +45,7 @@ bool eventManager::onePlayer(player * humanPlayer)
             {
                 NEWLINE
                 cout << "You won!";
-                humanPlayer->wins++;
+                humanPlayer.wins++;
                 gameOver = true;
             }
             else
@@ -67,48 +65,64 @@ bool eventManager::onePlayer(player * humanPlayer)
     return true; //debug
 }
 
-bool eventManager::twoPlayer(player * playerOne, player * playerTwo)
+bool eventManager::twoPlayer(player &playerOne, player &playerTwo)
 {
-    bool gameOver = false;
+    bool isGameOver = false;
+    pieceType lastPlayed;
+    CLInterface printer;
+    player * currentPlayer = &playerOne;
     
-    while(!gameOver)
+    while(!isGameOver)
     {
-        CLInterface printer;
-        int * inputVars = printer.getInput();
+        bool isValidMove = true;
         
-        NEWLINE
-        cout << "Player 1";
-        if (playerOne->addPiece(board, inputVars))
+        // Player input loop
+        do
         {
-            boardHistory.push(board);
+            int * inputVars;
+            inputVars = printer.getInput();
+            
+            int tempArray [2] = {inputVars[0] - 1, inputVars[1] - 1};
+            
+            NEWLINE
+            cout << currentPlayer->playerName;
+            
+            if (currentPlayer->addPiece(board, inputVars))
+            {
+                lastPlayed = currentPlayer->tType;
+                moveHistory.push(tempArray);
+                isGameOver = whoWon(tempArray, lastPlayed);
+            }
+            else
+            {
+                NEWLINE
+                cout << "Invalid move.";
+            }
+        } while(!isValidMove);
+        
+        // So we can toggle
+        if (currentPlayer == &playerOne)
+        {
+            currentPlayer = &playerTwo;
         }
         
         else
         {
-            NEWLINE
-            cout << "Invalid move.";
+            currentPlayer = &playerOne;
         }
     }
-    return true; //debug
+    
+    // TODO: figure out player output
+    return true;
 }
 
 // Keep arguments const because they should not be manipulated
-bool eventManager::whoWon(int lastMove[], const pieceType & lastType)
+bool eventManager::whoWon(const int lastMove[], const pieceType & lastType)
 {
     int verticalCounter = 0,
     horizontalCounter = 0,
     diagonalCounter = 0,
     rdiagonalCounter = 0;
-    
-    if (lastType == gX)
-    {
-        cout << "\ngX";
-    }
-    
-    else if (lastType == gO)
-    {
-        cout << "\ngX";
-    }
     
     for (int i = 0; i < 3; i++) {
         if (board[i][lastMove[0]] == lastType)
@@ -132,5 +146,6 @@ bool eventManager::whoWon(int lastMove[], const pieceType & lastType)
         }
     }
     
-    return (verticalCounter == 3 || horizontalCounter  == 3 || rdiagonalCounter == 3 || diagonalCounter == 3);
+    return (verticalCounter == 3 || horizontalCounter  == 3 ||
+            rdiagonalCounter == 3 || diagonalCounter == 3);
 }

@@ -16,7 +16,7 @@ class CLInterface
 {
 public:
     // Takes only a 3*3 gameboard as argument and pretty prints to CLI
-    void printBoard(pieceType ** board);
+    void printBoard(pieceType ** &board);
     
     // Uses CLI to get input from user for next move on gameboard (x, y)
     int * getInput();

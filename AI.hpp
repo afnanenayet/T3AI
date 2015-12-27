@@ -9,18 +9,23 @@
 #ifndef AI_hpp
 #define AI_hpp
 
+#include "gamePieces.hpp"
+
 class AI
 {
 private:
     struct node
     {
-        node * root = nullptr,
+        pieceType ** scenario;
+        node
         * left = nullptr,
         * right = nullptr;
     };
+    node * root = nullptr;
     
 public:
-    AI();
+    AI(pieceType );
+    pieceType type;
 };
 
 #endif /* AI_hpp */
