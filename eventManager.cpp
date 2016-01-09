@@ -11,9 +11,9 @@
 
 enum result {tie, xWin, oWin};
 
-eventManager::eventManager(pieceType** &arg)
+eventManager::eventManager(board *arg)
 {
-    board = arg;
+    instanceBoard = arg;
 }
 
 using namespace std;
@@ -32,14 +32,15 @@ bool eventManager::onePlayer(player &humanPlayer)
         
         // Setting an array here because the space for inputVars won't be held after anything changes
         int tempArray [2] = {inputVars[0] - 1, inputVars[1] - 1};
+        memcpy(inputVars, tempArray, sizeof(tempArray));
         
         pieceType lastPlayed;
         
-        if (humanPlayer.addPiece(board, inputVars))
+        if (instanceBoard->addPiece(tempArray[0], tempArray[1], humanPlayer.tType))
         {
             lastPlayed = humanPlayer.tType;
             
-            printer.printBoard(board);
+            //printer.printBoard(instanceBoard); TODO: update printing for new class
             
             if (whoWon(tempArray, lastPlayed))
             {
@@ -87,7 +88,7 @@ bool eventManager::twoPlayer(player &playerOne, player &playerTwo)
             NEWLINE
             cout << currentPlayer->playerName;
             
-            if (currentPlayer->addPiece(board, inputVars))
+            if (instanceBoard->addPiece(tempArray[0] - 1, tempArray[1] - 1, currentPlayer->tType))
             {
                 lastPlayed = currentPlayer->tType;
                 moveHistory.push(tempArray);
@@ -100,52 +101,10 @@ bool eventManager::twoPlayer(player &playerOne, player &playerTwo)
             }
         } while(!isValidMove);
         
-        // So we can toggle
-        if (currentPlayer == &playerOne)
-        {
-            currentPlayer = &playerTwo;
-        }
-        
-        else
-        {
-            currentPlayer = &playerOne;
-        }
+        // Toggling between players because turns
+        (currentPlayer == &playerOne) ? currentPlayer = &playerTwo : currentPlayer = &playerOne;
     }
     
     // TODO: figure out player output
     return true;
-}
-
-// Keep arguments const because they should not be manipulated
-bool eventManager::whoWon(const int lastMove[], const pieceType & lastType)
-{
-    int verticalCounter = 0,
-    horizontalCounter = 0,
-    diagonalCounter = 0,
-    rdiagonalCounter = 0;
-    
-    for (int i = 0; i < 3; i++) {
-        if (board[i][lastMove[0]] == lastType)
-        {
-            horizontalCounter++;
-        }
-        
-        if (board[lastMove[1]][i] == lastType)
-        {
-            verticalCounter++;
-        }
-        
-        if (board[i][i] == lastType)
-        {
-            diagonalCounter++;
-        }
-        
-        if (board[2 - i][i] == lastType)
-        {
-            rdiagonalCounter++;
-        }
-    }
-    
-    return (verticalCounter == 3 || horizontalCounter  == 3 ||
-            rdiagonalCounter == 3 || diagonalCounter == 3);
 }

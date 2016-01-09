@@ -13,6 +13,7 @@
 #include "gamePieces.hpp"
 #include "eventManager.hpp"
 #include "CLInterface.hpp"
+#include "board.hpp"
 
 #define NEWLINE cout << '\n'; //print a newline
 
@@ -63,9 +64,8 @@ int main()
         
         if (userInput == "1")
         {
-            pieceType ** board = createBoard();
-            eventManager game(board);
-            
+            board gameBoard;
+            eventManager game(&gameBoard);
             
             srand(uint(time(nullptr)));
             
@@ -89,7 +89,6 @@ int main()
                 cout << "You are playing with the X piece";
                 game.onePlayer(human);
             }
-            delete board;
         }
         else if (userInput == "2")
         {

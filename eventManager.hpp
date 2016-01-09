@@ -11,23 +11,17 @@
 
 #include <stack>
 #include <random>
+#include "string.h"
 #include "player.hpp"
 #include "CLInterface.hpp"
+#include "board.hpp"
 
 class eventManager
 {
-    pieceType ** board;
-    std::stack<pieceType**> boardHistory;
-    
-    // This allows the user to undo moves
-    std::stack<int*> moveHistory; // thinking about switching to this from boardhistory
-    
-    
-    // Determines whether the player won
-    bool whoWon(const int lastMove[], const pieceType & lastType);
+    board * instanceBoard;
 
 public:
-    eventManager(pieceType ** &arg);
+    eventManager(board * arg);
     
     // A game where a human player plays against the AI, returns 0 if the AI won
     // returns 1 if the player won

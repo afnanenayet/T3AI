@@ -10,7 +10,7 @@
 
 // Node for a the AI tree
 
-AI::AI()
+AI::AI(pieceType playingPiece)
 {
     
 }

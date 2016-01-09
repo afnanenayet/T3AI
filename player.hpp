@@ -27,12 +27,6 @@ public:
     // Constructor sets whether player is an X or an O
     player(pieceType);
     
-    // pass game board and array[2] that contains the player's moves
-    // adds piece to specified point on the gameboard, checking to make sure
-    // it does not override an existing piece. If the move is valid (within bounds
-    // of the board and not overriding an existing game piece) the function returns true
-    bool addPiece(pieceType** gameBoard, int addPosition[]);
-    
     // Sets player name
     void setName(std::string name);
     bool won();

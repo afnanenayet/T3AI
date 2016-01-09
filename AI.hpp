@@ -24,7 +24,7 @@ private:
     node * root = nullptr;
     
 public:
-    AI(pieceType );
+    AI(pieceType playingPiece);
     pieceType type;
 };
 

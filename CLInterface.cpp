@@ -75,7 +75,7 @@ int * CLInterface::getInput()
     std::cin >> tempArray[1];
     NEWLINE
     
-    /**NOTE: this will return the address of the memory
-     associated with the array**/
+    /**NOTE: this will return the address of the stack
+    memory associated with the array so copy immediately**/
     return tempArray;
 }
