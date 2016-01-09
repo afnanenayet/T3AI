@@ -12,31 +12,8 @@ player::player(pieceType initializeType)
 {
     // Initializes the player class and their type (X or O)
     player::tType = initializeType;
-}
-
-bool player::won()
-{
-    if (moveHistory.size() < 3)
-    {
-        return false;
-    }
-    else {
-        auto diagCounter = 0;
-        for (auto movePair : moveHistory)
-        {
-            if (movePair[0] == movePair[1])
-            {
-                diagCounter++;
-            }
-        }
-        if (diagCounter == 3) {
-            return true;
-        }
-        
-        else {
-            return false;
-        }
-    }
+    losses = 0;
+    wins = 0;
 }
 
 void player::setName(std::string name)

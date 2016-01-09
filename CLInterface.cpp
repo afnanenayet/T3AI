@@ -5,14 +5,14 @@
 //  Created by Afnan Enayet on 11/20/15.
 //  Copyright © 2015 Afnan Enayet. All rights reserved.
 //
-// This one's quick and dirty :)
+//  This one's quick and dirty :)
 
 #include "CLInterface.hpp"
 #define NEWLINE cout << "\n";
 
 using namespace std;
 
-void CLInterface::printBoard(pieceType ** &board)
+friend void CLInterface::printBoard(const board& Board) // TODO setup friendship with board.hpp
 {
     NEWLINE
     cout << "    1   2   3   <-- x";
@@ -33,7 +33,7 @@ void CLInterface::printBoard(pieceType ** &board)
                 cout << "|";
             }
             
-            switch((board[i][j]))
+            switch((Board.gameBoard[i][j]))
             {
                 case gO:
                     cout << " O ";

@@ -39,10 +39,9 @@ bool eventManager::onePlayer(player &humanPlayer)
         if (instanceBoard->addPiece(tempArray[0], tempArray[1], humanPlayer.tType))
         {
             lastPlayed = humanPlayer.tType;
+            instanceBoard->print();
             
-            //printer.printBoard(instanceBoard); TODO: update printing for new class
-            
-            if (whoWon(tempArray, lastPlayed))
+            if (instanceBoard->didPieceWin(lastPlayed))
             {
                 NEWLINE
                 cout << "You won!";
@@ -83,16 +82,15 @@ bool eventManager::twoPlayer(player &playerOne, player &playerTwo)
             int * inputVars;
             inputVars = printer.getInput();
             
-            int tempArray [2] = {inputVars[0] - 1, inputVars[1] - 1};
+            int tempArray [2] = {(inputVars[0] - 1), (inputVars[1] - 1)};
             
             NEWLINE
             cout << currentPlayer->playerName;
             
-            if (instanceBoard->addPiece(tempArray[0] - 1, tempArray[1] - 1, currentPlayer->tType))
+            if (instanceBoard->addPiece(tempArray[0], tempArray[1], currentPlayer->tType))
             {
                 lastPlayed = currentPlayer->tType;
-                moveHistory.push(tempArray);
-                isGameOver = whoWon(tempArray, lastPlayed);
+                isGameOver = instanceBoard->didPieceWin(lastPlayed);
             }
             else
             {

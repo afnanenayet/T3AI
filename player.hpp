@@ -15,21 +15,18 @@
 
 class player
 {
-    std::vector<int*> moveHistory;
     
 public:
     // Player statistics/info
-    int wins = 0;
-    int losses = 0;
+    int wins;
+    int losses;
     std::string playerName;
     pieceType tType;
     
     // Constructor sets whether player is an X or an O
     player(pieceType);
-    
     // Sets player name
     void setName(std::string name);
-    bool won();
 };
 
 #endif /* player_hpp */

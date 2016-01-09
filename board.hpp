@@ -11,6 +11,7 @@
 
 #include "gamePieces.hpp"
 #include "string.h"
+#include "CLInterface.hpp"
 
 
 class board {
@@ -18,7 +19,7 @@ private:
     pieceType ** gameBoard; // keep private to prevent unintentional copying
     
     // Keep track of these to find out whether piece won or not
-    unsigned char lastMove[2];
+    int lastMove[2];
     
 public:
     // Creates a board of length and width
@@ -49,6 +50,16 @@ public:
     // of the board and not overriding an existing game piece) the function returns true
     bool addPiece(unsigned char x, unsigned char y, pieceType addType);
     
+    // Prints the board to command line
+    void printTemp();
+    
+    // In order to keep things modular, define a print function externally
+    // it will have access to the pieceType ** pointer to allow for quick
+    // printing
+    friend void printBoard(board Board);
+    
+    // Retrieve the contents of a particular position on the board
+    pieceType identify(int x, int y);
 };
 
 #endif /* board_hpp */
