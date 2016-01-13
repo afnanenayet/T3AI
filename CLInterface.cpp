@@ -12,7 +12,7 @@
 
 using namespace std;
 
-friend void CLInterface::printBoard(const board& Board) // TODO setup friendship with board.hpp
+/*void printBoard(const board& Board) // TODO setup friendship with board.hpp
 {
     NEWLINE
     cout << "    1   2   3   <-- x";
@@ -62,11 +62,11 @@ friend void CLInterface::printBoard(const board& Board) // TODO setup friendship
     NEWLINE
     cout << "y";
     NEWLINE
-}
+}*/
 
-int * CLInterface::getInput()
+array<int, 2> CLInterface::getInput()
 {
-    int tempArray[2];
+    std::array<int, 2> tempArray;
     NEWLINE
     std::cout << "Enter X: ";
     std::cin >> tempArray[0];
@@ -74,8 +74,5 @@ int * CLInterface::getInput()
     std::cout << "Enter Y: ";
     std::cin >> tempArray[1];
     NEWLINE
-    
-    /**NOTE: this will return the address of the stack
-    memory associated with the array so copy immediately**/
     return tempArray;
 }

@@ -59,12 +59,12 @@ bool board::didPieceWin(pieceType checkPiece)
     rdiagonalCounter = 0;
     
     for (int i = 0; i < 3; i++) {
-        if (gameBoard[i][lastMove[0]] == checkPiece)
+        if (gameBoard[i][lastMove[1]] == checkPiece)
         {
             horizontalCounter++;
         }
         
-        if (gameBoard[lastMove[1]][i] == checkPiece)
+        if (gameBoard[lastMove[0]][i] == checkPiece)
         {
             verticalCounter++;
         }
@@ -84,17 +84,17 @@ bool board::didPieceWin(pieceType checkPiece)
             rdiagonalCounter == 3 || diagonalCounter == 3);
 }
 
-bool board::addPiece(unsigned char x, unsigned char y, pieceType addType)
+bool board::addPiece(unsigned short x, unsigned short y, pieceType addType)
 {
-    unsigned char arrayIndex[2] = {static_cast<unsigned char>(x), static_cast<unsigned char>(y)};
-    
+    std::array<unsigned short, 2> arrayIndex;
+    arrayIndex[0] = x - 1;
+    arrayIndex[1] = y - 1;
     try
     {
         if (VALID(arrayIndex))
         {
-            (gameBoard[arrayIndex[1]][arrayIndex[0]]) = addType;
-            memcpy(arrayIndex, lastMove, sizeof(lastMove));
-            std::cout << "\nlast move: " << lastMove[0] << ", " << lastMove[1]; //DEBUG
+            gameBoard[arrayIndex[0]][arrayIndex[1]] = addType;
+            lastMove = arrayIndex;
             return true;
         }
         else
@@ -104,11 +104,12 @@ bool board::addPiece(unsigned char x, unsigned char y, pieceType addType)
     }
     catch (int n)
     {
+        std::cout << "\nError: " << n << " occurred.";
         return false;
     }
 }
 
-void board::printTemp()
+void board::print()
 {
     NEWLINE
     std::cout << "    1   2   3   <-- x";
@@ -160,7 +161,7 @@ void board::printTemp()
     NEWLINE
 }
 
-pieceType board::identify(int x, int y)
+pieceType board::identify(unsigned short x, unsigned short y)
 {
     if (x < 3 && x >= 0 && y < 3 && y>=0)
     {
@@ -169,6 +170,6 @@ pieceType board::identify(int x, int y)
     
     else
     {
-        return gEmpty;
+        throw 404; // Error 404: out of bounds error
     }
 }

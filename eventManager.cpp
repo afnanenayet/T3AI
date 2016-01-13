@@ -27,16 +27,11 @@ bool eventManager::onePlayer(player &humanPlayer)
     {
         // Allocate space for array so memory isn't killed when getInput() moves out of scope
         // (otherwise the pointer could point to wrong data)
-        int * inputVars;
-        inputVars = printer.getInput();
-        
-        // Setting an array here because the space for inputVars won't be held after anything changes
-        int tempArray [2] = {inputVars[0] - 1, inputVars[1] - 1};
-        memcpy(inputVars, tempArray, sizeof(tempArray));
+        std::array<int, 2> inputVars = printer.getInput();
         
         pieceType lastPlayed;
         
-        if (instanceBoard->addPiece(tempArray[0], tempArray[1], humanPlayer.tType))
+        if (instanceBoard->addPiece(inputVars[0], inputVars[1], humanPlayer.tType))
         {
             lastPlayed = humanPlayer.tType;
             instanceBoard->print();
@@ -79,15 +74,13 @@ bool eventManager::twoPlayer(player &playerOne, player &playerTwo)
         // Player input loop
         do
         {
-            int * inputVars;
+            std:;array<int, 2> inputVars;;
             inputVars = printer.getInput();
-            
-            int tempArray [2] = {(inputVars[0] - 1), (inputVars[1] - 1)};
             
             NEWLINE
             cout << currentPlayer->playerName;
             
-            if (instanceBoard->addPiece(tempArray[0], tempArray[1], currentPlayer->tType))
+            if (instanceBoard->addPiece(inputVars[0], inputVars[1], currentPlayer->tType))
             {
                 lastPlayed = currentPlayer->tType;
                 isGameOver = instanceBoard->didPieceWin(lastPlayed);

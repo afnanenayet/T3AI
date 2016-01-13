@@ -66,6 +66,10 @@ int main()
         {
             board gameBoard;
             eventManager game(&gameBoard);
+            // Introducing these here to keep them in scope
+            // for game initialization
+            pieceType playerPiece;
+            pieceType computerPiece;
             
             srand(uint(time(nullptr)));
             
@@ -73,22 +77,24 @@ int main()
             
             if ((rand() % 1) < .5)
             {
-                
-                // Initializing players
-                player human(gO);
-                player computer(gX);
+                playerPiece = gO;
+                computerPiece = gX;
                 NEWLINE
                 cout << "You are playing with the O piece";
-                game.onePlayer(human);
             }
             else
             {
-                player human(gX);
-                player computer(gO);
+                playerPiece = gX;
+                computerPiece = gO;
                 NEWLINE
                 cout << "You are playing with the X piece";
-                game.onePlayer(human);
             }
+            
+            // Declaring players for game
+            player computer(computerPiece);
+            player human(playerPiece);
+            
+            game.onePlayer(human);
         }
         else if (userInput == "2")
         {

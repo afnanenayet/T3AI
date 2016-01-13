@@ -9,9 +9,10 @@
 #ifndef board_hpp
 #define board_hpp
 
+#include "CLInterface.hpp"
 #include "gamePieces.hpp"
 #include "string.h"
-#include "CLInterface.hpp"
+#include <array>
 
 
 class board {
@@ -19,7 +20,7 @@ private:
     pieceType ** gameBoard; // keep private to prevent unintentional copying
     
     // Keep track of these to find out whether piece won or not
-    int lastMove[2];
+    std::array<unsigned short, 2> lastMove = {0, 0};
     
 public:
     // Creates a board of length and width
@@ -48,18 +49,15 @@ public:
     // adds piece to specified point on the gameboard, checking to make sure
     // it does not override an existing piece. If the move is valid (within bounds
     // of the board and not overriding an existing game piece) the function returns true
-    bool addPiece(unsigned char x, unsigned char y, pieceType addType);
+    bool addPiece(unsigned short x, unsigned short y, pieceType addType);
     
     // Prints the board to command line
-    void printTemp();
+    void print();
     
-    // In order to keep things modular, define a print function externally
-    // it will have access to the pieceType ** pointer to allow for quick
-    // printing
-    friend void printBoard(board Board);
+    //friend void printBoard(const board& Board);
     
     // Retrieve the contents of a particular position on the board
-    pieceType identify(int x, int y);
+    pieceType identify(unsigned short x, unsigned short y);
 };
 
 #endif /* board_hpp */
