@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <stack>
+#include <random>
 #include <string>
 #include "player.hpp"
 #include "gamePieces.hpp"
@@ -19,33 +20,25 @@
 
 using namespace std;
 
-pieceType ** createBoard() {
-    //initializing the game board
-    pieceType ** gameBoard;
-    gameBoard = new pieceType *[3];
-
-    for (int i = 0; i < 3; i++)
-    {
-        gameBoard[i] = new pieceType[3];
-        for (int j = 0; j < 3; j++)
-        {
-            (gameBoard[i][j]) = gEmpty;
-        }
+// Returns a random coin flip between the X and O piece
+pieceType randPiece() {
+    std::random_device rDevice;
+    std::default_random_engine randEngine;
+    std::uniform_real_distribution<double> numberDistribution(0, 1);
+    
+    if (numberDistribution(randEngine) > .5) {
+        return gX;
     }
-    return gameBoard;
+    
+    else {
+        return gO;
+    }
 }
 
 int main()
 {
-    //std::stack<pieceType**> boardHistory; //contains board history so user can undo
-    
-    
-    
-    //boardHistory.push(gameBoard); //pushing first state
-    
     //entering menu input loop
     string userInput;
-    
     
     do
     {
@@ -65,30 +58,11 @@ int main()
         if (userInput == "1")
         {
             board gameBoard;
-            eventManager game(&gameBoard);
+            eventManager game(gameBoard);
             // Introducing these here to keep them in scope
             // for game initialization
-            pieceType playerPiece;
-            pieceType computerPiece;
-            
-            srand(uint(time(nullptr)));
-            
-            cout << "\nrand: " << rand();
-            
-            if ((rand() % 1) < .5)
-            {
-                playerPiece = gO;
-                computerPiece = gX;
-                NEWLINE
-                cout << "You are playing with the O piece";
-            }
-            else
-            {
-                playerPiece = gX;
-                computerPiece = gO;
-                NEWLINE
-                cout << "You are playing with the X piece";
-            }
+            pieceType playerPiece = randPiece();
+            pieceType computerPiece = (playerPiece == gX) ? gO : gX;
             
             // Declaring players for game
             player computer(computerPiece);
@@ -111,6 +85,5 @@ int main()
             cout << "You did not enter a valid option. Please enter a valid option:";
         }
     } while (userInput != "q");
-    
     return 0;
 }

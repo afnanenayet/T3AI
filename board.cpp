@@ -14,6 +14,7 @@
 
 board::board()
 {
+    std::cout << "\n board constructor called";
     gameBoard = new pieceType * [3];
     
     for (auto i = 0; i < 3; i++)
@@ -25,31 +26,6 @@ board::board()
         }
     }
 }
-
-board::~board()
-{
-    for (int i = 0; i < 3; i++)
-    {
-        delete gameBoard[i];
-    }
-    
-    // Not sure if necessary since we are using an
-    // array of pointers to pointers
-    delete gameBoard;
-}
-
-board::board(const board& rhs)
-{
-    for (auto i = 0; i < 3; i++)
-    {
-        gameBoard[i] = new pieceType[3];
-        for (auto j = 0; j < 3; j++)
-        {
-            (gameBoard[i][j]) = rhs.gameBoard[i][j];
-        }
-    }
-}
-
 
 bool board::didPieceWin(pieceType checkPiece)
 {

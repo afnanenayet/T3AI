@@ -18,10 +18,10 @@
 
 class eventManager
 {
-    board * instanceBoard;
+    board *instanceBoard;
 
 public:
-    eventManager(board * arg);
+    eventManager(board &arg);
     
     // A game where a human player plays against the AI, returns 0 if the AI won
     // returns 1 if the player won

@@ -25,22 +25,7 @@ private:
 public:
     // Creates a board of length and width
     board();
-    ~board();
-    // Copy assignment
-    // TODO: fix end of non-void function error
-    /*board& operator=(const board& rhs)
-    {
-        for (auto i = 0; i < 3; i++)
-        {
-            gameBoard[i] = new pieceType[3];
-            for (auto j = 0; j < 3; j++)
-            {
-                (gameBoard[i][j]) = rhs.gameBoard[i][j];
-            }
-        }
-    }*/
-    // Copy constructor
-    board(const board& rhs);
+    //~board();
     
     // Checks to see if the piece passed as argument has "won" the game
     bool didPieceWin(pieceType checkPiece); // checks to see if the piece

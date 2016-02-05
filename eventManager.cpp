@@ -11,9 +11,10 @@
 
 enum result {tie, xWin, oWin};
 
-eventManager::eventManager(board *arg)
+eventManager::eventManager(board &arg)
 {
-    instanceBoard = arg;
+    // Taking as reference because we want to modify the original board, not make a copy
+    instanceBoard = &arg;
 }
 
 using namespace std;
@@ -54,9 +55,7 @@ bool eventManager::onePlayer(player &humanPlayer)
             NEWLINE
             cout << "Invalid move.";
         }
-    }
-    while (!gameOver);
-    
+    } while (!gameOver);
     return true; //debug
 }
 
