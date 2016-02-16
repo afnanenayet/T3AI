@@ -14,9 +14,8 @@
 class AI
 {
 private:
-    struct node
-    {
-        pieceType ** scenario;
+    struct node {
+        pieceType * scenario;
         node
         * left = nullptr,
         * right = nullptr;

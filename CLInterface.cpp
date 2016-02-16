@@ -64,8 +64,7 @@ using namespace std;
     NEWLINE
 }*/
 
-array<int, 2> CLInterface::getInput()
-{
+array<int, 2> CLInterface::getInput() {
     std::array<int, 2> tempArray;
     NEWLINE
     std::cout << "Enter X: ";

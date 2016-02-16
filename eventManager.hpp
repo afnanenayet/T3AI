@@ -16,12 +16,11 @@
 #include "CLInterface.hpp"
 #include "board.hpp"
 
-class eventManager
-{
+class eventManager {
     board *instanceBoard;
 
 public:
-    eventManager(board &arg);
+    eventManager(board &arg) : instanceBoard(&arg);
     
     // A game where a human player plays against the AI, returns 0 if the AI won
     // returns 1 if the player won

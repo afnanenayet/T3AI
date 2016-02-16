@@ -8,15 +8,13 @@
 
 #include "player.hpp"
 
-player::player(pieceType initializeType)
-{
+player::player(pieceType initializeType) {
     // Initializes the player class and their type (X or O)
     player::tType = initializeType;
     losses = 0;
     wins = 0;
 }
 
-void player::setName(std::string name)
-{
+void player::setName(std::string name) {
     playerName = name;
 }

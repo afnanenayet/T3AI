@@ -35,13 +35,11 @@ pieceType randPiece() {
     }
 }
 
-int main()
-{
+int main() {
     //entering menu input loop
     string userInput;
     
-    do
-    {
+    do {
         NEWLINE
         cout << "Welcome to tic-tac-toe";
         NEWLINE
@@ -55,8 +53,7 @@ int main()
         NEWLINE
         getline(cin, userInput);
         
-        if (userInput == "1")
-        {
+        if (userInput == "1") {
             board gameBoard;
             eventManager game(gameBoard);
             // Introducing these here to keep them in scope
@@ -70,17 +67,14 @@ int main()
             
             game.onePlayer(human);
         }
-        else if (userInput == "2")
-        {
+        else if (userInput == "2") {
             //game.twoPlayer();
         }
-        else if (userInput == "q")
-        {
+        else if (userInput == "q") {
             return 0;
         }
         
-        else
-        {
+        else {
             NEWLINE
             cout << "You did not enter a valid option. Please enter a valid option:";
         }

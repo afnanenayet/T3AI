@@ -13,8 +13,7 @@
 #include "board.hpp"
 #include <iostream>
 
-class CLInterface
-{
+class CLInterface {
 public:
     // Takes only a 3*3 gameboard as argument and pretty prints to CLI
     // void printBoard(const board& Board);

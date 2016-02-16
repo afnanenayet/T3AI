@@ -13,8 +13,7 @@
 #include <string>
 #include <vector>
 
-class player
-{
+class player {
     
 public:
     // Player statistics/info
