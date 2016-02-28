@@ -25,7 +25,7 @@ private:
 public:
     // Creates a board of length and width
     board();
-    //~board();
+    ~board();
     
     // Checks to see if the piece passed as argument has "won" the game
     bool didPieceWin(pieceType checkPiece); // checks to see if the piece

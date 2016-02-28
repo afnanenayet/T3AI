@@ -25,6 +25,13 @@ board::board()
     }
 }
 
+board::~board() {
+    for (auto i = 0; i < 3; i++) {
+        delete[] gameBoard[i];
+    }
+    delete[] gameBoard;
+}
+
 bool board::didPieceWin(pieceType checkPiece) {
     int verticalCounter = 0,
     horizontalCounter = 0,
