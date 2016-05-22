@@ -15,6 +15,7 @@
 #include "player.hpp"
 #include "CLInterface.hpp"
 #include "board.hpp"
+#include "AI.hpp"
 
 class eventManager {
     board *instanceBoard;

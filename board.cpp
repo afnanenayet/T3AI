@@ -32,6 +32,17 @@ board::~board() {
     delete[] gameBoard;
 }
 
+board::board(const board &other) {
+    gameBoard = new pieceType * [3];
+    
+    for (auto i = 0; i < 3; i++) {
+        gameBoard[i] = new pieceType[3];
+        for (auto j = 0; j < 3; j++) {
+            gameBoard[i][j] = other.gameBoard[i][j];
+        }
+    }
+}
+
 bool board::didPieceWin(pieceType checkPiece) {
     int verticalCounter = 0,
     horizontalCounter = 0,
@@ -123,7 +134,7 @@ void board::print() {
     NEWLINE
 }
 
-pieceType board::identify(unsigned short x, unsigned short y) {
+pieceType board::identify(unsigned short x, unsigned short y) const {
     if (x < 3 && x >= 0 && y < 3 && y>=0) {
         return gameBoard[y][x];
     } else {

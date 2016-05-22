@@ -22,11 +22,11 @@ using namespace std;
 
 // Returns a random coin flip between the X and O piece
 pieceType randPiece() {
-    std::random_device rDevice;
-    std::default_random_engine randEngine;
-    std::uniform_real_distribution<double> numberDistribution(0, 1);
+    std::random_device randomDevice;
+    std::mt19937 mt(randomDevice());
+    std::uniform_real_distribution<double> numberDistribution((double) 0, (double) 1);
     
-    if (numberDistribution(randEngine) > .5) {
+    if (numberDistribution(mt) > .5) {
         return gX;
     }
     

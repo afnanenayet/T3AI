@@ -27,6 +27,25 @@ public:
     board();
     ~board();
     
+    // Copy constructor
+    board(const board & other);
+    
+    // Copy assignment
+    board & operator=(const board& other) {
+        pieceType ** tempBoard = other.gameBoard;
+        
+        // Delete the current board
+        for (auto i = 0; i < 3; i++) {
+            delete[] gameBoard[i];
+        }
+        delete[] gameBoard;
+        
+        this->gameBoard = tempBoard;
+        
+        return * this;
+    };
+    
+    
     // Checks to see if the piece passed as argument has "won" the game
     bool didPieceWin(pieceType checkPiece); // checks to see if the piece
     
@@ -42,7 +61,7 @@ public:
     //friend void printBoard(const board& Board);
     
     // Retrieve the contents of a particular position on the board
-    pieceType identify(unsigned short x, unsigned short y);
+    pieceType identify(unsigned short x, unsigned short y) const;
 };
 
 #endif /* board_hpp */

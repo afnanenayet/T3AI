@@ -1,0 +1,197 @@
+
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter a valid option. Please enter a valid option:
+Welcome to tic-tac-toe
+Enter a choice:
+q: quit
+1: 1 player (one computer)
+2: 2 players
+
+You did not enter 
