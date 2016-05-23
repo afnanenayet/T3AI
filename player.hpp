@@ -17,8 +17,8 @@ class player {
     
 public:
     // Player statistics/info
-    int wins;
-    int losses;
+    static int wins;
+    static int losses;
     std::string playerName;
     pieceType tType;
     
